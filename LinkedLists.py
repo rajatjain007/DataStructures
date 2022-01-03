@@ -62,7 +62,7 @@ print("Prepended SLL:")
 sll.printSLL()
 
 sll.insert(5.5,sll.head.next.next.next.next.next.next)
-print("Insert after the head of SLL:")
+print("Insert after the 7th node of SLL:")
 sll.printSLL()
 
 
