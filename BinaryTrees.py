@@ -14,6 +14,13 @@ class BinaryTree(object):
             trav = self.preorder(start.left,trav)
             trav = self.preorder(start.right,trav)
         return trav
+    
+    def inorder(self,start,trav)->str:
+        if start:
+            trav = self.inorder(start.left,trav)
+            trav += str(start.value) + "-"
+            trav = self.inorder(start.right,trav)
+        return trav
 
 
 """
@@ -33,5 +40,7 @@ tree.root.left.left = Node(4)
 tree.root.left.right = Node(5)
 tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
-print(tree.preorder(tree.root,""))
+print("Preorder traversal: " + tree.preorder(tree.root,""))
+print("Inorder traversal: " + tree.inorder(tree.root,""))
+
 
