@@ -34,6 +34,24 @@ class SingleLinkedList(object):
         newNode.next = after.next
         after.next = newNode
 
+    def delete(self,toDelete):
+        currentHead = self.head
+        if currentHead and currentHead.data == toDelete:
+            self.head = currentHead.next
+            return
+        
+        previousNode = None
+        while self.head != None and currentHead.data != toDelete:
+            previousNode = currentHead
+            currentHead = currentHead.next
+        
+        if currentHead is None:
+            return
+        previousNode.next = currentHead.next
+        currentHead = None
+
+        
+
 
     def printSLL(self):
         currentNode = self.head
@@ -42,9 +60,6 @@ class SingleLinkedList(object):
             currentNode = currentNode.next
         print("Null",end="")
         print("")
-
-    
-
 
 
 sll = SingleLinkedList()
@@ -64,6 +79,15 @@ sll.printSLL()
 sll.insert(5.5,sll.head.next.next.next.next.next.next)
 print("Insert after the 7th node of SLL:")
 sll.printSLL()
+
+sll.delete(-1)
+print("After deleting head")
+sll.printSLL()
+sll.delete(7)
+print("After deleting 7")
+sll.printSLL()
+
+
 
 
 
