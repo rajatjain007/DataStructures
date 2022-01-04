@@ -50,9 +50,25 @@ class SingleLinkedList(object):
         previousNode.next = currentHead.next
         currentHead = None
 
+    def deleteNodeAt(self,position):
+        currentHead = self.head
+        count = 0
+        if position==0:
+            self.head = currentHead.next
+            currentHead = None
+            return
         
-
-
+        previousNode = None
+        while currentHead and count != position:
+            previousNode = currentHead
+            currentHead = currentHead.next
+            count += 1
+        
+        if currentHead is None:
+            return
+        previousNode.next = currentHead.next
+        currentHead = None
+  
     def printSLL(self):
         currentNode = self.head
         while currentNode:
@@ -83,8 +99,13 @@ sll.printSLL()
 sll.delete(-1)
 print("After deleting head")
 sll.printSLL()
+
 sll.delete(7)
-print("After deleting 7")
+print("Deleting node with value = 7")
+sll.printSLL()
+
+sll.deleteNodeAt(2)
+print("Deleting node at position 2 ")
 sll.printSLL()
 
 
