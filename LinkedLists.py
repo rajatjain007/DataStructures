@@ -69,6 +69,23 @@ class SingleLinkedList(object):
         previousNode.next = currentHead.next
         currentHead = None
   
+    def lengthIterative(self):
+        count = 0
+        currentNode = self.head
+        while currentNode:
+            count += 1
+            currentNode = currentNode.next
+        return count
+
+    def lengthRecursive(self,node):
+        if node is None:
+            return 0
+        return 1 + self.lengthRecursive(node.next)
+
+
+        
+
+
     def printSLL(self):
         currentNode = self.head
         while currentNode:
@@ -107,6 +124,12 @@ sll.printSLL()
 sll.deleteNodeAt(2)
 print("Deleting node at position 2 ")
 sll.printSLL()
+
+print("Iterative lenght:")
+print(sll.lengthIterative())
+
+print("Recursive length:")
+print(sll.lengthRecursive(sll.head))
 
 
 
