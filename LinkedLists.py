@@ -113,10 +113,33 @@ class SingleLinkedList(object):
             self.head = currentNode
 
         currentNode.next,currentNode1.next = currentNode1.next,currentNode.next
-        
 
+    def reverseIt(self):
+        currentNode = self.head
+        previousNode = None
 
+        while currentNode:
+            nxt = currentNode.next
+            currentNode.next = previousNode
+            previousNode = currentNode
+            currentNode = nxt
+        self.head = previousNode
+    
+    def reverseRec(self):
+        def revRec(currentNode,previousNode):
+            if not currentNode:
+                return previousNode
 
+            nxt = currentNode.next
+            currentNode.next = previousNode
+            previousNode = currentNode
+            currentNode = nxt
+            return revRec(currentNode,previousNode)
+            
+        self.head = revRec(self.head,None)
+            
+
+    
     def printSLL(self):
         currentNode = self.head
         while currentNode:
@@ -165,6 +188,15 @@ print(sll.lengthRecursive(sll.head))
 print("Swapping nodes 5 and 10")
 sll.swap(5,10)
 sll.printSLL()
+
+print("Reversing the list iteratively")
+sll.reverseIt()
+sll.printSLL()
+
+print("Reversing the list recursively")
+sll.reverseRec()
+sll.printSLL()
+
 
 
 
