@@ -82,8 +82,39 @@ class SingleLinkedList(object):
             return 0
         return 1 + self.lengthRecursive(node.next)
 
+    def swap(self,key,key1):
+        if key1 == key:
+            return
+        currentNode = self.head
+        previousNode = None
 
+        while currentNode and currentNode.data!=key:
+            previousNode = currentNode
+            currentNode = currentNode.next
+
+        currentNode1 = self.head
+        previousNode1 = None
+
+        while currentNode1 and currentNode1.data != key1:
+            previousNode1 = currentNode1
+            currentNode1 = currentNode1.next
         
+        if not currentNode or not currentNode1:
+            return
+
+        if previousNode:
+            previousNode.next = currentNode1
+        else:
+            self.head = currentNode1
+
+        if previousNode1:
+            previousNode1.next = currentNode
+        else:
+            self.head = currentNode
+
+        currentNode.next,currentNode1.next = currentNode1.next,currentNode.next
+        
+
 
 
     def printSLL(self):
@@ -130,6 +161,10 @@ print(sll.lengthIterative())
 
 print("Recursive length:")
 print(sll.lengthRecursive(sll.head))
+
+print("Swapping nodes 5 and 10")
+sll.swap(5,10)
+sll.printSLL()
 
 
 
